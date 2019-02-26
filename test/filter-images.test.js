@@ -60,3 +60,29 @@ test('filter by horns', function(assert) {
     //assert
     assert.deepEqual(result, expected);
 });
+test('return all images if no horns selected', function(assert) {
+    //arrange
+    const filter = {
+        horns: NaN
+    };
+    const expected = images;
+    //act
+    const result = filterImages(filter, images);
+
+    //assert
+    assert.deepEqual(result, expected);
+});
+
+test('filter by horns and keyword', function(assert) {
+    //arrange
+    const filter = {
+        horns: 2,
+        keyword: 'blue'
+    };
+    const expected = [{ title: 'image two', keyword: 'blue', horns: 2 }];
+    //act
+    const result = filterImages(filter, images);
+
+    //assert
+    assert.deepEqual(result, expected);
+});
