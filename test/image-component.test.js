@@ -1,21 +1,8 @@
+import { createImageTemplate } from '../src/image-component.js';
+
 const test = QUnit.test;
 
 QUnit.module('image component');
-
-function createImageTemplate(image) {
-    const template = document.createElement('template');
-    const html = /*html*/`
-        <li>
-            <h2>${image.title}</h2>
-            <img src="${image.url}">
-            <h2>Horns: ${image.horns}</h2>
-        </li>
-    `;
-    template.innerHTML = html;
-    const dom = template.content;
-    return dom;
-}
-
 
 test('image template', function(assert) {
     //arrange
