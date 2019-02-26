@@ -11,7 +11,9 @@ const images = [
 function filterImages(filter, images) {
     return images.filter(image => {
         const hasKeyword = !filter.keyword || image.keyword === filter.keyword;
-        return hasKeyword;
+        const hasHorns = !filter.horns || image.horns === filter.horns;
+
+        return hasKeyword && hasHorns;
     });
 }
 
@@ -39,6 +41,22 @@ test('no keyword filter returns all images', assert => {
     const expected = images;
     //act
     const result = filterImages(filter, images);
+    //assert
+    assert.deepEqual(result, expected);
+});
+
+test('filter by horns', function(assert) {
+    //arrange
+    const filter = {
+        horns: 2
+    };
+    const expected = [
+        { title: 'image two', keyword: 'blue', horns: 2 },
+        { title: 'image three', keyword: 'red', horns: 2 }
+    ];
+    //act
+    const result = filterImages(filter, images);
+
     //assert
     assert.deepEqual(result, expected);
 });
