@@ -1,6 +1,6 @@
 const filterForm = document.getElementById('filter-form');
 
-export function loadFilters(callback) {
+export default function loadFilters(callback) {
     filterForm.addEventListener('submit', event => {
         event.preventDefault();
         const formDaddy = new FormData(filterForm);
@@ -14,4 +14,3 @@ export function loadFilters(callback) {
         callback(filter);
     });
 }
-

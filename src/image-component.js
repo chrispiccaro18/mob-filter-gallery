@@ -12,10 +12,20 @@ export function createImageTemplate(image) {
     return dom;
 }
 
+const imageList = document.getElementById('image-list');
+
 export default function loadImage(images) {
-    const imageList = document.getElementById('image-list');
+
+    clearImages();
+
     images.forEach(image => {
         const dom = createImageTemplate(image);
         imageList.appendChild(dom);
     });
 }
+
+function clearImages() {
+    while(imageList.children.length > 0) {
+        imageList.lastElementChild.remove();
+    }
+}   
